@@ -1,0 +1,63 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User profile with health preferences",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "mood": { "type": "string" },
+        "waterTarget": { "type": "number", "default": 2000 },
+        "stepTarget": { "type": "number", "default": 10000 },
+        "lastLogin": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid"]
+    },
+    "HealthLog": {
+      "title": "HealthLog",
+      "description": "Daily health metrics",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "steps": { "type": "number" },
+        "water": { "type": "number" },
+        "sleep": { "type": "number" },
+        "mood": { "type": "string" },
+        "weight": { "type": "number" }
+      },
+      "required": ["userId", "date"]
+    },
+    "Habit": {
+      "title": "Habit",
+      "description": "Wellness habits and rituals",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "userId": { "type": "string" },
+        "name": { "type": "string" },
+        "completed": { "type": "boolean" },
+        "date": { "type": "string", "format": "date" },
+        "type": { "type": "string", "enum": ["body", "mind", "skin", "soul"] }
+      },
+      "required": ["userId", "name", "date"]
+    }
+  },
+  "firestore": {
+    "users/{userId}": {
+      "schema": "User",
+      "description": "User profiles"
+    },
+    "logs/{logId}": {
+      "schema": "HealthLog",
+      "description": "Daily health logs"
+    },
+    "habits/{habitId}": {
+      "schema": "Habit",
+      "description": "Tracked habits"
+    }
+  }
+}
