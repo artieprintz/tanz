@@ -28,7 +28,7 @@ export default function TodoList({ user }: TodoListProps) {
       { id: '9', name: '1 Fruit Daily 🍎', completed: false, date: today },
       { id: '10', name: 'Daily Reading 📖', completed: false, date: today },
       { id: '11', name: '7 Hrs Sleep 😴', completed: false, date: today },
-      { id: '12', name: 'Forget Elai 💔', completed: false, date: today }
+      { id: '12', name: 'LOVE ELAI <3', completed: false, date: today }
     ];
     
     if (savedHabits) {
